@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'rest_framework',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -83,6 +85,14 @@ DATABASES = {
         'USER':os.environ.get('DB_USER'),
         'PASSWORD':os.environ.get('DB_PASS'),
     }
+#     'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'recipe-api',
+#        'USER': 'postgres',
+#        'PASSWORD': '12345',
+#        'HOST': 'localhost',
+#        'PORT': '5432',
+#    }
 }
 
 
@@ -128,3 +138,10 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AUTH_USER_MODEL = 'core.User'
+
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+}
